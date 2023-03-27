@@ -7,6 +7,18 @@ class ContaCorrente(Conta):
         super().__init__(id_conta, saldo)
         self._limite = limite
 
+    def get_id_conta(self) -> int:
+        return self._id_conta
+
+    def get_saldo(self) -> float:
+        return self._saldo
+
+    def get_limite(self) -> float:
+        return self._limite
+
+    def set_limite(self, valor: float) -> None:
+        self._limite = valor
+
     def depositar(self, valor: float) -> None:
         if valor < 0:
             raise ValueError("Não é permitido depositar valores negativos")
@@ -21,5 +33,3 @@ class ContaCorrente(Conta):
             raise ValueError("Valor maior que o permitido")
 
         self._saldo -= valor
-
-        
