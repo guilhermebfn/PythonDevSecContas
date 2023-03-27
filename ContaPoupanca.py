@@ -36,16 +36,16 @@ class ContaPoupanca(Conta):
 
     def verificar_rendimento_ao_ano(self, tempo: int, tipo: str) -> float:
         if tipo in ["ano", "a"]:
-            taxa = self._taxa_de_rendimento_ao_ano
+            taxa = (1 + self._taxa_de_rendimento_ao_ano)
         elif tipo in ["mes", "mês", "M"]:
-            taxa = self._taxa_de_rendimento_ao_ano ** (1 / 12)
+            taxa = (1 + self._taxa_de_rendimento_ao_ano) ** (1 / 12)
         elif tipo in ["dia", "d"]:
-            taxa = self._taxa_de_rendimento_ao_ano ** (1 / 365)
+            taxa = (1 + self._taxa_de_rendimento_ao_ano) ** (1 / 365)
         elif tipo in ["hora", "h"]:
-            taxa = self._taxa_de_rendimento_ao_ano ** (1 / (365 * 24))
+            taxa = (1 + self._taxa_de_rendimento_ao_ano) ** (1 / (365 * 24))
         elif tipo in ["minuto", "min", "m"]:
-            taxa = self._taxa_de_rendimento_ao_ano ** (1 / (365 * 24 * 60))
+            taxa = (1 + self._taxa_de_rendimento_ao_ano) ** (1 / (365 * 24 * 60))
         elif tipo in ["segundo", "seg", "s"]:
-            taxa = self._taxa_de_rendimento_ao_ano ** (1 / (365 * 24 * 60 * 60))
+            taxa = (1 + self._taxa_de_rendimento_ao_ano) ** (1 / (365 * 24 * 60 * 60))
         
-        return self._saldo * ((1 + taxa) ** tempo)
+        return self._saldo * (taxa ** tempo)
