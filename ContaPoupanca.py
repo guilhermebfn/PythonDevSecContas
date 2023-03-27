@@ -3,8 +3,8 @@ from Conta import Conta
 class ContaPoupanca(Conta):
     _taxa_de_rendimento_ao_ano: float
 
-    def __init__(self, taxa_de_rendimento_ao_ano: float) -> None:
-        super().__init__()
+    def __init__(self, id_conta: int, saldo: float, taxa_de_rendimento_ao_ano: float) -> None:
+        super().__init__(id_conta, saldo)
         self._taxa_de_rendimento_ao_ano = taxa_de_rendimento_ao_ano / 100 # Taxa passada como porcentagem
 
     def get_id_conta(self) -> int:
